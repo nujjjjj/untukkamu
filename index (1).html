@@ -1,0 +1,137 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNTUKMU</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffcccb;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #f77;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e55;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 10px;
+            background-color: #f77;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="step1">
+        <h2>welcome</h2>
+        <p>di isi ya!!</p>
+        <input type="text" id="name" placeholder="Nama kamu" required>
+        <input type="number" id="age" placeholder="Umur kamu" required>
+        <button id="enterBtn">Enter</button>
+    </div>
+
+    <div class="container hidden" id="step2">
+        <h2>ikan hiu makan tomat</h2>
+        <button data-answer="wrong">A.bodo amat</button>
+        <button data-answer="correct">B. i love you so much</button>
+    </div>
+
+    <div class="container hidden" id="step3">
+        <h2>Ikan-ikan apa yang sering diadu?</h2>
+        <button data-answer="correct">A. Cupang</button>
+        <button data-answer="wrong">B. Hiu</button>
+    </div>
+
+    <div class="container hidden" id="step4">
+        <h2>I Love You</h2>
+        <button id="yesBtn">A. Too</button>
+        <button id="noBtn">B. Najis</button>
+        <p id="saltingText" class="hidden">DUH JADI SALTING</p>
+    </div>
+
+    <footer>
+        <p>R3ND1 |  RJ66</p>
+    </footer>
+
+    <script>
+        // Pindah step 1 ke step 2
+        document.getElementById('enterBtn').addEventListener('click', () => {
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+
+            if (name && age) {
+                document.getElementById('step1').classList.add('hidden');
+                document.getElementById('step2').classList.remove('hidden');
+            } else {
+                alert('Isi nama dan umur dulu!');
+            }
+        });
+
+        // Step 2: Pilihan hewan bertanduk
+        document.querySelectorAll('#step2 button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                if (e.target.dataset.answer === 'correct') {
+                    alert('Hore Bener!');
+                    document.getElementById('step2').classList.add('hidden');
+                    document.getElementById('step3').classList.remove('hidden');
+                } else {
+                    alert('Salah, coba lagi! ');
+                }
+            });
+        });
+
+        // Step 3: Pilihan ikan
+        document.querySelectorAll('#step3 button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                if (e.target.dataset.answer === 'correct') {
+                    alert('Hore Bener!');
+                    document.getElementById('step3').classList.add('hidden');
+                    document.getElementById('step4').classList.remove('hidden');
+                } else {
+                    alert('Salah, coba lagi!');
+                }
+            });
+        });
+
+        // Step 4: Pilihan bucin
+        document.getElementById('yesBtn').addEventListener('click', () => {
+            alert('Yay!');
+            document.getElementById('saltingText').classList.remove('hidden');
+        });
+
+        document.getElementById('noBtn').addEventListener('mouseover', (event) => {
+            const button = event.target;
+            button.style.position = 'absolute';
+            button.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+            button.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+        });
+    </script>
+</body>
+</html">"""
